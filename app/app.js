@@ -18,7 +18,7 @@ new Vue(
         methods:{
             postNewUser(){
 
-                axios.post('http://localhost:3000/users',this.newUser)
+                axios.post('http://192.168.1.14:3000/users',this.newUser)
                 .then((res)=>{ 
                     console.log('axios response received')
                     this.formPostStatus=res.status
@@ -36,11 +36,11 @@ new Vue(
                 })
             },
             getUsers(){
-                axios.get('http://localhost:3000/users')
+                axios.get('http://192.168.1.14:3000/users')
                 .then( response => this.users=response.data)
             },
             getTasks(){
-                axios.get('http://localhost:3000/tasks')
+                axios.get('http://192.168.1.14:3000/tasks')
                 .then( response=>this.tasks=response.data)
             }
         },
