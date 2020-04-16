@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tasks Viewer</title>
+    <script src="https://unpkg.com/vue@2.5.17/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue-axios@2.1.4/dist/vue-axios.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+    <div id='app'>
+        <h1>Users</h1>
+        <div v-for="user in users">
+            <p>{{user.name}} - {{user.age}}</p>
+        </div>
+        <h1>Tasks</h1>
+        <p>Open Tasks</p> 
+            <div v-for="task in tasks">
+                <ul v-if="!task.completed">{{task.description}}</ul>
+            </div>
+        <p>Completed Tasks</p>
+            <div v-for="task in tasks">
+                <ul v-if="task.completed">{{task.description}}</ul>
+            </div>
+        <h1>Add New User</h1>
+        <div>
+            <label for="name">Name</label>
+            <input id="name" type="text" v-model="newUser.name">
+        </div>
+        <div>
+            <label for="email">Email</label>
+            <input id="email" type="text" v-model="newUser.email">
+        </div>
+        <div>
+            <label for="age">Age</label>
+            <input id="age" type="number" v-model="newUser.age">
+        </div>
+        <div>
+            <label for="password">password</label>
+            <input id="password" type="password" v-model="newUser.password">
+        </div>
+        <div>
+            <button @click.prevent="postNewUser">Add User</button>
+        </div>
+        <div v-show="formPostStatus">
+            <p>{{formPostStatus}}</p>
+            <p >{{formPostResponse}}</p>
+        </div>
+
+    </div>
+    <script src="./app.js"></script>
+    <style>
+
+    </style>
+</body>
+</html>
+
+
